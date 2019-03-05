@@ -1,6 +1,6 @@
 # Solar Map
 
-Produces a solar raster map for the current time. Rasters are produced at 0.5° resolution. Processing time will vary per machine but a modest processor takes about 6 minutes per raster.
+Produces a solar raster map for the current time. Rasters are produced at 0.5° resolution. Processing time will vary per machine but a modest processor takes about 6 minutes per raster with --high-accuracy and less than 1 minute without.
 
 ![alt text](https://pysolar.readthedocs.io/en/latest/_images/reference_frame.png "how pysolar calculates solar radiation")
 
@@ -21,7 +21,7 @@ optional arguments:</br>
                         default: NOW</br>
   -o      full path to the new output GeoTIFF file</br>
   --high-accuracy       uses a refined algorithm for solar altitude at the
-                        cost of a time-expensive algo
+                        expense of time
 
 ## Requires
 

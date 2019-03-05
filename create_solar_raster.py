@@ -37,7 +37,7 @@ def parse_args(args):
     parser.add_argument(
         "--high-accuracy",
         dest="high_accuracy",
-        help="uses a refined algorithm for solar altitude at the cost of a time-expensive algo",
+        help="uses a refined algorithm for solar altitude at the expense of time",
         action="store_true"
     )
     return parser.parse_args(args)
