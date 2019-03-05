@@ -1,5 +1,29 @@
+"""
+MIT License
+
+Copyright (c) 2019 Richard Jarvis -- JarvisGIS, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 import argparse
 import datetime
+import logging
 import sys
 import pytz
 
@@ -7,6 +31,16 @@ import numpy as np
 from osgeo import gdal, osr
 from pysolar.solar import get_altitude, get_altitude_fast
 from pysolar.radiation import get_radiation_direct
+
+LOGGER = logging.getLogger(__name__)
+
+def setup_logger():
+    """
+    sets up a basic logger
+    """
+    log_format = "[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
+    logging.basicConfig(level=logging.INFO, stream=sys.stdout,
+                        format=log_format, datefmt="%Y-%m-%d %H:%M:%S")
 
 def parse_args(args):
     """
@@ -80,6 +114,7 @@ def save_raster(array, file_path):
     """
     Creates a GeoTIFF and saves the calculation
     """
+    LOGGER.info("Creating file: %s...", file_path)
     cols = array.shape[1]
     rows = array.shape[0]
     origin_x = -180
@@ -97,6 +132,7 @@ def save_raster(array, file_path):
 
     out_raster_srs.SetProjection(out_raster_srs.ExportToWkt())
     out_band.FlushCache()
+    LOGGER.info("FINISHED!")
 
 def main(args):
     """
@@ -104,7 +140,11 @@ def main(args):
     Args:
         args ([str]): command line parameter list
     """
+    setup_logger()
     args = parse_args(args)
+    if args.high_accuracy:
+        LOGGER.info("Using HIGH_ACCURACY. Please be patient.")
+    LOGGER.info("Generating sunshine raster for %s", args.start_time)
     arr = calculate_solar_radiation(args.start_time, args.high_accuracy)
     save_raster(arr, args.save_location)
 
