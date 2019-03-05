@@ -26,7 +26,7 @@ Generates a solar radiation raster</br>
 optional arguments:</br>
   -h, --help            show this help message and exit</br>
   -s, --start-time
-                        Solar radiation model UTC date in YYYYMMDDHH format;
+                        Solar radiation model UTC date in YYYYMMDDHHMM format;
                         default: NOW</br>
   -o      full path to the new output GeoTIFF file</br>
   --high-accuracy       uses a refined algorithm for solar altitude at the
@@ -37,10 +37,10 @@ Generate the current solar raster</br>
 `$ python create_solar_raster.py -o ~/Documents/current.tif`</br>
 </br>
 Generate for a given time</br>
-`$ python create_solar_raster.py -s 2019032023 -o ~/Documents/springequinox.tif`</br>
+`$ python create_solar_raster.py -s 201903202258 -o ~/Documents/springequinox.tif`</br>
 </br>
 Generate at high accuracy</br>
-`$ python create_solar_raster.pyy -s 2019062117 -o ~/Documents/summersolstice.tif --high-accuracy`
+`$ python create_solar_raster.py -s 201906211554 -o ~/Documents/summersolstice.tif --high-accuracy`
 
 </br>
 </br>

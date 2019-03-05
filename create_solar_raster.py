@@ -56,8 +56,8 @@ def parse_args(args):
     parser.add_argument(
         "-s", "--start-time",
         dest="start_time",
-        help="Solar radiation model UTC date in YYYYMMDDHH format; default: NOW",
-        default=(datetime.datetime.utcnow().strftime('%Y%m%d%H')),
+        help="Solar radiation model UTC date in YYYYMMDDHHMM format; default: NOW",
+        default=(datetime.datetime.utcnow().strftime('%Y%m%d%H%M')),
         type=get_datetime,
         metavar="start time"
     )
@@ -78,9 +78,9 @@ def parse_args(args):
 
 def get_datetime(formatted_string):
     """
-    returns datetime from formatted string YYYYMMDDHH
+    returns datetime from formatted string YYYYMMDDHHMM
     """
-    date = datetime.datetime.strptime(formatted_string, '%Y%m%d%H')
+    date = datetime.datetime.strptime(formatted_string, '%Y%m%d%H%M')
     return date.replace(tzinfo=pytz.utc)
 
 def get_coordinates():
