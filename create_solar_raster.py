@@ -58,15 +58,15 @@ def get_coordinates():
                        sparse=False,
                        indexing='xy')
 
-def solar_calc(a, b, date, high_accuracy=False):
+def solar_calc(longitude, latitude, date, high_accuracy=False):
     """
     numpy vectorize func
     """
     altitude_deg = None
     if high_accuracy:
-        altitude_deg = get_altitude(b, a, date)
+        altitude_deg = get_altitude(latitude, longitude, date)
     else:
-        altitude_deg = get_altitude_fast(b, a, date)
+        altitude_deg = get_altitude_fast(latitude, longitude, date)
     return get_radiation_direct(date, altitude_deg)
 
 def calculate_solar_radiation(date, high_accuracy=False):

@@ -25,6 +25,8 @@ optional arguments:</br>
 
 ## Requires
 
+### Python >= 3.5
+
 * GDAL / pygdal
 * numpy
 * pysolar
