@@ -7,6 +7,15 @@ Produces a solar raster map for the current time. Rasters are produced at 0.5° 
 The output raster contains Wattage values and can be used in calculations requiring solar radiation at
 Earth's surface. [See pysolar documentation](https://pysolar.readthedocs.io/en/latest/) for more information.
 
+## Requires
+
+### Python >= 3.5
+
+* GDAL / pygdal
+* numpy
+* pysolar
+* pytz
+
 ## Usage
 
 usage: create_solar_raster.py [-h] [-s start time] [-o save location]
@@ -23,14 +32,15 @@ optional arguments:</br>
   --high-accuracy       uses a refined algorithm for solar altitude at the
                         expense of time
 
-## Requires
-
-### Python >= 3.5
-
-* GDAL / pygdal
-* numpy
-* pysolar
-* pytz
+## Examples
+Generate the current solar raster</br>
+`$ python create_solar_raster.py -o ~/Documents/current.tif`</br>
+</br>
+Generate for a given time</br>
+`$ python create_solar_raster.py -s 2019032023 -o ~/Documents/springequinox.tif`</br>
+</br>
+Generate at high accuracy</br>
+`$ python create_solar_raster.pyy -s 2019062117 -o ~/Documents/summersolstice.tif --high-accuracy`
 
 </br>
 </br>
