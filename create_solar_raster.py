@@ -38,7 +38,7 @@ def setup_logger():
     """
     sets up a basic logger
     """
-    log_format = "[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
+    log_format = "[%(asctime)s] %(levelname)s:%(message)s"
     logging.basicConfig(level=logging.INFO, stream=sys.stdout,
                         format=log_format, datefmt="%Y-%m-%d %H:%M:%S")
 
