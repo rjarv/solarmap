@@ -4,6 +4,7 @@ Produces a solar raster map for the current time. Rasters are produced at 0.5° 
 
 ## Requires
  * GDAL / pygdal
+ * numpy
  * pysolar
  * pytz
  
