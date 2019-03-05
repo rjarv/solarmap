@@ -2,6 +2,11 @@
 
 Produces a solar raster map for the current time. Rasters are produced at 0.5° resolution. Processing time will vary per machine but a modest processor takes about 6 minutes per raster.
 
+![alt text](https://pysolar.readthedocs.io/en/latest/_images/reference_frame.png "how pysolar calculates solar radiation")
+
+The output raster contains Wattage values and can be used in calculations requiring solar radiation at
+Earth's surface. [See pysolar documentation](https://pysolar.readthedocs.io/en/latest/) for more information.
+
 ## Requires
 
 * GDAL / pygdal
